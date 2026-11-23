@@ -34,9 +34,10 @@ npm run preview
 | Path | What it holds |
 | --- | --- |
 | `src/content.ts` | All wording, facts, contact details and links. Edit text here. |
-| `src/components/` | One file per section: hero, group statement, four business chapters, identity, capabilities, milestones, enquiries, footer, header and menu. |
-| `src/styles/` | `index.css` (colours, type, navigation) and `sections.css` (each section). |
-| `src/motion.ts` | Scroll animation with GSAP and ScrollTrigger, plus light scroll smoothing on desktop. |
+| `src/components/` | One file per section: `Hero`, `Statement` (introduction), `Businesses` (the four chapters), `Milestones` (story), `Footer` (contact), `Header` (navigation and menu). `Identity`, `Capabilities` and `Enquiry` are kept from the earlier design but are not on the page. |
+| `src/styles/` | `index.css` (colours, type, buttons, navigation) and `sections.css` (each section). |
+| `src/motion.ts` | The scroll-drawn line, reveals, pointer interactions and light scroll smoothing on desktop (GSAP, ScrollTrigger, Lenis). |
+| `src/geometry.ts` | Shapes shared by the drawings and the line: the T-slot section, waves and the hand-drawn loop. |
 | `public/img/` | Optimised photographs and logos. |
 | `scripts/optimize-images.mjs` | Recreates `public/img/` from original photographs. |
 | `scripts/prerender.mjs` | Writes the rendered page into `dist/index.html` during `build`. |
@@ -102,4 +103,6 @@ npm run images -- path/to/originals
 
 - Works with keyboard only; the menu traps focus and closes with Escape.
 - Visitors who ask their device for reduced motion get a static page with everything visible.
+  On Windows this is Settings › Accessibility › Visual effects › Animation effects. To preview the
+  animated page on such a device add `?motion=on` to the address; `?motion=off` shows the still page.
 - Phones and tablets use native scrolling. Scroll smoothing applies only with a mouse on desktop.

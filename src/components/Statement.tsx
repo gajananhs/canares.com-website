@@ -1,13 +1,13 @@
-import { group } from '../content';
+import { group, introLine } from '../content';
 
 export default function Statement() {
-  const words = group.statement.split(' ');
+  const words = introLine.split(' ');
   return (
-    <section className="statement tone-light" id="statement" data-tone="light" aria-labelledby="statement-h">
-      <i className="rail" data-rail aria-hidden="true" />
+    <section className="intro" id="intro" aria-labelledby="intro-h">
+      <svg className="ln" data-line="intro" aria-hidden="true" />
       <div className="inner">
-        <p className="eyebrow" id="statement-h">The group</p>
-        <p className="statement-text" data-words>
+        <p className="eyebrow" id="intro-h" data-reveal><i />The group</p>
+        <p className="intro-text" data-words>
           {words.map((w, i) => (
             <span key={i} className="word">{w}{i < words.length - 1 ? ' ' : ''}</span>
           ))}
@@ -15,8 +15,8 @@ export default function Statement() {
         <dl className="facts">
           {group.facts.map((f) => (
             <div key={f.label} data-reveal>
+              <dd>{f.value}</dd>
               <dt>{f.label}</dt>
-              <dd>{'count' in f && f.count ? <span data-count={f.count}>{f.value}</span> : f.value}</dd>
             </div>
           ))}
         </dl>

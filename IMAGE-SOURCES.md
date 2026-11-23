@@ -29,6 +29,11 @@ The Canares Aquaculture icon is drawn inline from https://canaresaquaculture.com
 
 ## Known limits
 
+- The originals were downloaded again on 23 November 2026 to look for larger versions. Only the
+  canares.com photographs are larger than the files here (2000 px wide); `cap-design`, the Quickair
+  chapter photograph, now has a 1200 px version. The Aquaculture photographs (331 to 362 px, harvest
+  900 px) and the Foundation photographs (550 px) are already at the full size the sites publish.
+
 - The hatchery photographs are small (about 330 px wide). Larger originals would look better.
 - Canares Aluminium has no photographs confirmed as its own. Its hero panel, chapter and
   capability row use drawn profile sections instead.

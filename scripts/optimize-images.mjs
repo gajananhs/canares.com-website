@@ -22,7 +22,7 @@ const jobs = {
   'foundation-camp':    ['fn_10-1.png', null, [550, 360], 72],
   'foundation-lamp':    ['fn_1-1.png', null, [550, 360], 72],
   'foundation-class':   ['fn_9.png', null, [550, 360], 72],
-  'cap-design':        ['ca_canares-vacuum-piping-pump-facility.webp', { l: 0.2, t: 0, w: 0.6, h: 1 }, [900, 520], 70],
+  'cap-design':        ['ca_canares-vacuum-piping-pump-facility.webp', { l: 0.2, t: 0, w: 0.6, h: 1 }, [1200, 900, 520], 72],
   'cap-manufacturing': ['ca_canares-factory-cnc-machine.webp', { l: 0.125, t: 0, w: 0.75, h: 1 }, [900, 520], 70],
   'cap-automation':    ['qa_large-bore-line-with-flanged-valves.jpg', { l: 0, t: 0.2, w: 1, h: 0.5625 }, [825, 520], 70],
   'cap-biology':       ['aq_tank-top.jpg', null, [362], 78],

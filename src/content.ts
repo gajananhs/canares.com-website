@@ -15,11 +15,18 @@ export interface Business {
   email: string;
   phone: string;
   color: string;
+  /** Homepage chapter: display title split into lines, one short description, where it operates. */
+  title: string[];
+  line: string;
+  where: string;
 }
 
 export const businesses: Business[] = [
   {
     id: 'quickair', n: '01', pillar: 'Industrial systems', name: 'Quickair',
+    title: ['Quickair'],
+    line: 'Modular piping for compressed air, vacuum and inert gases. Push-fit joints, basic tools and no welding.',
+    where: 'Bengaluru · Since 1998',
     short: 'Modular piping for compressed air, vacuum and inert gases.',
     url: 'https://www.quickair.in/', domain: 'quickair.in',
     contactUrl: 'https://www.quickair.in/contact',
@@ -27,6 +34,9 @@ export const businesses: Business[] = [
   },
   {
     id: 'aluminium', n: '02', pillar: 'Materials', name: 'Canares Aluminium',
+    title: ['Canares', 'Aluminium'],
+    line: 'Extrusion profiles, tubes, bars and rods in 6063 and 6061 alloys, with custom dies cut when a standard section will not do.',
+    where: 'Kumta, Uttara Kannada',
     short: 'Aluminium extrusion profiles, tubes, bars and rods.',
     url: 'https://www.canaresaluminium.com/', domain: 'canaresaluminium.com',
     contactUrl: 'https://www.canaresaluminium.com/#contact',
@@ -34,6 +44,9 @@ export const businesses: Business[] = [
   },
   {
     id: 'aquaculture', n: '03', pillar: 'Food', name: 'Canares Aquaculture',
+    title: ['Canares', 'Aquaculture'],
+    line: 'A marine hatchery and sea cage farm for Asian Sea Bass, from broodstock to market on the Karnataka coast.',
+    where: 'Holanagadde, Kumta',
     short: 'Asian Sea Bass hatchery and sea cage farming.',
     url: 'https://canaresaquaculture.com/', domain: 'canaresaquaculture.com',
     contactUrl: 'https://canaresaquaculture.com/contact/',
@@ -41,6 +54,9 @@ export const businesses: Business[] = [
   },
   {
     id: 'foundation', n: '04', pillar: 'Community', name: 'Canares Foundation',
+    title: ['Canares', 'Foundation'],
+    line: 'Free health camps, support for government schools and girls’ education in rural Uttara Kannada.',
+    where: 'Holanagadde, Karnataka',
     short: 'Healthcare, education and girl-child initiatives.',
     url: 'https://canaresfoundation.com/', domain: 'canaresfoundation.com',
     contactUrl: 'https://canaresfoundation.com/donation-contact/',
@@ -178,8 +194,10 @@ export const social = [
 
 export const nav = [
   { id: 'businesses', label: 'Businesses' },
-  { id: 'group', label: 'The group' },
-  { id: 'capabilities', label: 'Capabilities' },
-  { id: 'milestones', label: 'Milestones' },
+  { id: 'story', label: 'Story' },
   { id: 'contact', label: 'Contact' },
 ];
+
+// One sentence for the homepage introduction, built only from the facts above.
+export const introLine =
+  'Since 1998, Canares has grown from one engineering company in Bengaluru into four businesses: modular piping, aluminium extrusion, marine fish farming and community work.';

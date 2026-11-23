@@ -3,10 +3,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Statement from './components/Statement';
 import Businesses from './components/Businesses';
-import Identity from './components/Identity';
-import Capabilities from './components/Capabilities';
 import Milestones from './components/Milestones';
-import Enquiry from './components/Enquiry';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -27,12 +24,10 @@ export default function App() {
         <Hero />
         <Statement />
         <Businesses />
-        <Identity />
-        <Capabilities />
         <Milestones />
-        <Enquiry />
       </main>
       <Footer />
+      <div className="cursor" data-cursor-el aria-hidden="true"><span /></div>
     </>
   );
 }

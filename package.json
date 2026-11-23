@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "engines": { "node": "22.x" },
   "description": "Canares Group corporate website (static React + Vite build)",
   "scripts": {
     "dev": "vite",

@@ -1,9 +1,89 @@
-import type { CSSProperties } from 'react';
+import { Fragment, type CSSProperties, type ReactNode } from 'react';
+import { profileOutline } from '../geometry';
 
 export const Arrow = () => <span className="arrow" aria-hidden="true">↗</span>;
 
 /** Shorthand for inline custom properties. */
 export const vars = (v: Record<string, string>) => v as CSSProperties;
+
+/** Text split into words and characters so each can be animated. Give the parent an aria-label. */
+export function Split({ text, from = 0 }: { text: string; from?: number }) {
+  let i = from;
+  const words = text.split(' ');
+  return (
+    <span aria-hidden="true">
+      {words.map((word, wi) => (
+        <Fragment key={wi}>
+          <span className="w">
+            {Array.from(word).map((ch, ci) => (
+              <span key={ci} className="ch" style={vars({ '--i': String(i++) })}><span>{ch}</span></span>
+            ))}
+          </span>
+          {wi < words.length - 1 ? ' ' : ''}
+        </Fragment>
+      ))}
+    </span>
+  );
+}
+
+export const ArrowIcon = () => (
+  <svg viewBox="0 0 16 16" aria-hidden="true">
+    <path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+interface ButtonProps { href: string; children: ReactNode; external?: boolean; variant?: 'solid' | 'line'; down?: boolean; small?: ReactNode }
+
+/** Pill link with a fill that rises on hover and an arrow that swaps. */
+export function Button({ href, children, external, variant = 'solid', down, small }: ButtonProps) {
+  return (
+    <a className={`btn ${variant}${down ? ' down' : ''}`} href={href} data-magnetic {...(external ? { target: '_blank', rel: 'noopener' } : {})}>
+      <span className="btn-label">{children}{small && <small>{small}</small>}</span>
+      <span className="btn-ico" aria-hidden="true"><ArrowIcon /><ArrowIcon /></span>
+    </a>
+  );
+}
+
+export const finishes = [
+  { id: 'mill', label: 'Mill' },
+  { id: 'anodised', label: 'Anodised' },
+  { id: 'powder', label: 'Powder-coated' },
+  { id: 'wood', label: 'Wood finish' },
+] as const;
+export type Finish = (typeof finishes)[number]['id'];
+
+/** Filled 40 × 40 mm T-slot section. `finish` picks the surface; `uid` keeps gradient ids unique per copy. */
+export function ProfileShape({ finish = 'mill', uid, dims }: { finish?: Finish; uid: string; dims?: boolean }) {
+  return (
+    <svg className="profile-shape" viewBox="0 0 200 200" aria-hidden="true">
+      <defs>
+        <linearGradient id={`${uid}-mill`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#eef1f4" /><stop offset=".32" stopColor="#a3adb9" /><stop offset=".56" stopColor="#e3e8ed" /><stop offset="1" stopColor="#8793a1" />
+        </linearGradient>
+        <linearGradient id={`${uid}-anodised`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#5a6472" /><stop offset=".45" stopColor="#262d38" /><stop offset=".6" stopColor="#4a5361" /><stop offset="1" stopColor="#1a2029" />
+        </linearGradient>
+        <linearGradient id={`${uid}-powder`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#3f7df0" /><stop offset="1" stopColor="#1a4fc0" />
+        </linearGradient>
+        <pattern id={`${uid}-wood`} width="200" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(8)">
+          <rect width="200" height="26" fill="#b98556" />
+          <path d="M0 6c40-5 70 5 110 0s60-3 90 1M0 15c50 4 80-5 120-1s50 3 80-1M0 22c30-3 90 4 130 0s40-2 70 1" fill="none" stroke="#8f5f37" strokeWidth="1.6" />
+        </pattern>
+      </defs>
+      {finishes.map((f) => (
+        <path key={f.id} className={f.id === finish ? 'fin on' : 'fin'} d={profileOutline} fill={`url(#${uid}-${f.id})`} />
+      ))}
+      <circle className="bore" cx="100" cy="100" r="14" />
+      {dims && (
+        <g className="dims">
+          <path d="M-20 0V200M-28 0h16M-28 200h16" fill="none" strokeWidth="1.2" />
+          <text x="-26" y="104" textAnchor="middle" transform="rotate(-90 -26 100)">40 mm</text>
+        </g>
+      )}
+    </svg>
+  );
+}
 
 /** Outline of a T-slot section, used as a quiet pattern in the hero. */
 export function ProfilePattern() {
