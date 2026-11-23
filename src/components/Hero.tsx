@@ -10,7 +10,7 @@ const layers = [
   { name: 'hero-foundation', widths: [412], w: 412, h: 549 },
 ];
 
-const HOLD = 4200;
+const HOLD = 1500;
 
 export default function Hero() {
   const [active, setActive] = useState(0);
